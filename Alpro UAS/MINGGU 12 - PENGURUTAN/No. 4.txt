@@ -1,0 +1,75 @@
+program Perlombaan
+kamus
+
+type peserta <
+ nama : string
+ g:integer
+ s:integer
+ b:integer
+ poin: integer
+>
+
+type olimpiade: array [0..100] of peserta
+
+tab : olimpiade
+n : integer
+
+algoritma
+ isiArray(tab,n)
+ sorting(tab,n)
+ tampilArray(tab,n)
+endprogram
+
+procedure isiArray(in/out t :olimpiade, in/out n:integer)
+{ IS. n data tim dan perolehan medali telah siap pada piranti masukan
+ FS. menerima input n dan array t berisi n data tim yang mengikuti olimpiade}
+ kamus
+  i:integer
+ algoritma
+  i <- 0
+  input(n)
+  while i < n do
+   input(t[i].nama, t[i].g, t[i].s, t[i].b)
+   t[i].poin <- poin(t[i].g, t[i].s, t[i].b)
+   i <- i + 1
+  endwhile
+endprocedure
+
+procedure tampilArray(in t :olimpiade, in n :integer)
+{ IS. terdefinisi sebuah array t yang berisi n data tim dan perolehan medalinya
+ FS. menampilkan array t ke layar monitor}
+ kamus
+  i:integer
+ algoritma
+  i <- 0
+  while i < n do
+   output(t[i].nama, t[i].g, t[i].s, t[i].b)
+   i <- i + 1
+  endwhile
+endprocedure
+
+function poin(g,s,b : integer) -> integer
+{mengembalikan nilai poin berdasarkan nilai g, s dan b yang diberikan}
+ output((4*g) + (3*s) + b)
+endfunction
+
+procedure sorting(in/out t :olimpiade, in n :integer)
+{ IS. terdefinisi sebuah array t yang berisi n data tim dan perolehan medalinya
+ FS. array t terurut descending berdasarkan hasil perhitungan perolehan poinnya, gunakan insertion sort}
+kamus 
+ pass:integer
+ 
+algoritma
+ pass <- 1
+  while pass <= n-1 do
+   i <- pass
+   temp <- t[pass].poin
+   while i > 0 and temp < t[i-1].poin do
+    t[i].poin <- t[i-1].poin
+    i <- i – 1
+   endwhile
+  endwhile
+  t[i].poin <- temp
+  pass <- pass + 1
+
+endprocedure

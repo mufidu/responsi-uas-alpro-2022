@@ -1,0 +1,88 @@
+program Himpunan
+kamus: 
+    const nMax: integer=37
+    type tHimpunan: <
+        anggota : array [1..nMax] of integer
+        panjang : integer >
+    list_1, list_2 : tHimpunan
+algoritma
+    bacaMasukan(list_1)
+    bacaMasukan(list_2)
+    urut(list_1)
+    urut(list_2)
+    output("Himpunan 1 = Himpunan 2?", sama(list_1, list_2))
+endprogram
+
+
+procedure bacaMasukan(in/out set: tHimpunan) 
+kamus: 
+    i, masukan : integer
+    found : bool
+algoritma: 
+    i <- 0
+    found <- false
+    while i < nMax and not found do
+        input(set.anggota[i])  
+        set.panjang <- set.panjang + 1
+        i <- i + 1
+        found <- ada(set, masukan)
+    endwhile
+endprocedure
+
+function ada(set: tHimpunan, x: integer) bool
+kamus:
+    i : integer
+    found : bool
+algoritma:
+    i <- 0
+    found <- false
+    while i < set.panjang and not found do
+         found <- set.anggota[i] == x 
+	 i <- i + 1
+    endwhile
+    return found
+endfunction
+
+
+procedure urut(in/out set : tHimpunan)
+kamus
+    pass, i, temp, N : integer
+algoritma
+    N <- set.panjang
+    pass <- 1
+    while pass <= N-1 do
+        i <- pass
+        temp <- set.anggota[pass]
+        while i > 0 and temp < set.anggota[i-1] do
+            set.anggota[i] <- set.anggota[i-1]
+            i <- i - 1
+        endwhile
+        set.anggota[i] <- temp
+        pass <- pass + 1
+    endwhile
+endprocedure
+
+
+function sama(set1, set2: tHimpunan) -> bool
+kamus:
+    i : integer
+    found : found
+algoritma
+    i <- 0
+    found <- false
+    if list_1.panjang = list_2.panjang then
+	found <-true
+    	while found and i < set1.panjang do
+		found <-ada(set2, set1.anggota[i])
+		i < i + 1
+    	endwhile
+    endif
+    return found
+endfunction
+
+
+
+
+
+
+
