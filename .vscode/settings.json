@@ -1,0 +1,6 @@
+{
+  "files.exclude": {
+    "Alpro UAS": true,
+    ".vscode": true
+  }
+}
