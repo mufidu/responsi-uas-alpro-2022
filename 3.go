@@ -10,16 +10,16 @@ func main() {
 	var i int
 	var j int
 
-	fmt.Println("Masukkan jumlah murid: ")	
-	fmt.Scanln(&j)	
-	for i = 0; i < j; i++ {	
-		fmt.Println("Masukkan nama murid: ")	
-		fmt.Scanln(&list_murid[i].nama)	
-		fmt.Println("Masukkan mata pelajaran: ")	
+	fmt.Println("Masukkan jumlah murid: ")
+	fmt.Scanln(&j)
+	for i = 0; i < j; i++ {
+		fmt.Println("Masukkan nama murid: ")
+		fmt.Scanln(&list_murid[i].nama)
+		fmt.Println("Masukkan mata pelajaran: ")
 		fmt.Scanln(&list_murid[i].mapel)
 		fmt.Println("Masukkan nilai: ")
-		fmt.Scanln(&list_murid[i].nilai)	
-	}	
+		fmt.Scanln(&list_murid[i].nilai)
+	}
 
 	fmt.Println("\nSetelah diurutkan dari nilai tertinggi ke terendah: ")
 	selectionSort(&list_murid, j)
